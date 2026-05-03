@@ -7,447 +7,780 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode:"class",
-  theme:{extend:{
-    colors:{"surface-bright":"#39393b","primary-container":"#ff5545","on-tertiary":"#2f3131","primary-fixed":"#ffdad5","on-tertiary-container":"#282a2a","on-tertiary-fixed-variant":"#454747","inverse-primary":"#c0000a","surface-container-lowest":"#0e0e10","on-secondary-fixed":"#1c1b1c","secondary-fixed":"#e5e2e3","secondary-container":"#4a494a","surface-container-high":"#2a2a2c","on-secondary":"#313031","on-primary-container":"#5c0002","on-primary-fixed":"#410001","on-error-container":"#ffdad6","tertiary-container":"#909191","surface-tint":"#ffb4aa","on-secondary-container":"#bab8b9","inverse-surface":"#e4e2e4","secondary-fixed-dim":"#c8c6c7","on-error":"#690005","on-primary":"#690003","primary":"#ffb4aa","outline":"#ad8883","on-surface":"#e4e2e4","tertiary-fixed":"#e2e2e2","surface-variant":"#353437","error-container":"#93000a","surface-container-highest":"#353437","inverse-on-surface":"#303032","surface-container":"#1f1f21","tertiary":"#c6c6c7","tertiary-fixed-dim":"#c6c6c7","outline-variant":"#5d3f3b","error":"#ffb4ab","surface-dim":"#131315","on-background":"#e4e2e4","surface-container-low":"#1b1b1d","primary-fixed-dim":"#ffb4aa","on-secondary-fixed-variant":"#474647","surface":"#131315","on-surface-variant":"#e7bdb7","background":"#131315","secondary":"#c8c6c7","on-tertiary-fixed":"#1a1c1c","on-primary-fixed-variant":"#930005"},
-    borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
-    spacing:{"container-max":"1440px","margin":"32px","gutter":"16px","unit":"4px"},
-    fontFamily:{"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-lg":["Space Grotesk"],"label-mono":["Space Grotesk"],"body-md":["Space Grotesk"],"headline-xl":["Space Grotesk"]},
-    fontSize:{"headline-md":["24px",{"lineHeight":"1.2","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"1.5","fontWeight":"400"}],"label-mono":["12px",{"lineHeight":"1","letterSpacing":"0.1em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],"headline-xl":["48px",{"lineHeight":"1.1","letterSpacing":"-0.04em","fontWeight":"700"}]}
-  }}
-}
+<script>
+  tailwind.config = {
+    darkMode:"class",
+    theme:{extend:{
+      colors:{"surface-bright":"#39393b","primary-container":"#ff5545","on-tertiary":"#2f3131","primary-fixed":"#ffdad5","on-tertiary-container":"#282a2a","on-tertiary-fixed-variant":"#454747","inverse-primary":"#c0000a","surface-container-lowest":"#0e0e10","on-secondary-fixed":"#1c1b1c","secondary-fixed":"#e5e2e3","secondary-container":"#4a494a","surface-container-high":"#2a2a2c","on-secondary":"#313031","on-primary-container":"#5c0002","on-primary-fixed":"#410001","on-error-container":"#ffdad6","tertiary-container":"#909191","surface-tint":"#ffb4aa","on-secondary-container":"#bab8b9","inverse-surface":"#e4e2e4","secondary-fixed-dim":"#c8c6c7","on-error":"#690005","on-primary":"#690003","primary":"#ffb4aa","outline":"#ad8883","on-surface":"#e4e2e4","tertiary-fixed":"#e2e2e2","surface-variant":"#353437","error-container":"#93000a","surface-container-highest":"#353437","inverse-on-surface":"#303032","surface-container":"#1f1f21","tertiary":"#c6c6c7","tertiary-fixed-dim":"#c6c6c7","outline-variant":"#5d3f3b","error":"#ffb4ab","surface-dim":"#131315","on-background":"#e4e2e4","surface-container-low":"#1b1b1d","primary-fixed-dim":"#ffb4aa","on-secondary-fixed-variant":"#474647","surface":"#131315","on-surface-variant":"#e7bdb7","background":"#131315","secondary":"#c8c6c7","on-tertiary-fixed":"#1a1c1c","on-primary-fixed-variant":"#930005"},
+      borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
+      spacing:{"container-max":"1440px","margin":"32px","gutter":"16px","unit":"4px"},
+      fontFamily:{"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-lg":["Space Grotesk"],"label-mono":["Space Grotesk"],"body-md":["Space Grotesk"],"headline-xl":["Space Grotesk"]},
+      fontSize:{"headline-md":["24px",{"lineHeight":"1.2","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"1.5","fontWeight":"400"}],"label-mono":["12px",{"lineHeight":"1","letterSpacing":"0.1em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"1.5","fontWeight":"400"}],"headline-xl":["48px",{"lineHeight":"1.1","letterSpacing":"-0.04em","fontWeight":"700"}]}
+    }}
+  }
 </script>
 <style>
-/* =============================================
-   MOTION DESIGN SYSTEM
-   One set of tokens. Every element draws from here.
-   ============================================= */
-:root {
-  --clr-primary: #ffb4aa;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  /* Durations: fast = micro feedback, base = transitions, slow = entrances */
-  --t-fast: 200ms;
-  --t-base: 360ms;
-  --t-slow: 640ms;
+/* ─────────────────────────────────
+   RESET & BASE
+───────────────────────────────── */
+html { scroll-behavior: auto; }
+*, *::before, *::after { cursor: none !important; }
+
+/* ─────────────────────────────────
+   CURSOR — SVG-based ring for crisp
+   quality at any scale
+───────────────────────────────── */
+#c-dot {
+  position: fixed; top: 0; left: 0; z-index: 10000;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #ffb4aa;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+/* SVG ring — stays razor-sharp when scaled because it's vector */
+#c-ring {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  width: 36px; height: 36px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  overflow: visible;
+}
+#c-ring circle {
+  fill: none;
+  stroke: rgba(255,180,170,0.55);
+  stroke-width: 1.5;
+  /* vector-effect keeps stroke width constant regardless of SVG scale */
+  vector-effect: non-scaling-stroke;
 }
 
-html { scroll-behavior: smooth; }
-
-/* =============================================
-   INTRO LOADER
-   ============================================= */
+/* ─────────────────────────────────
+   INTRO SCREEN
+───────────────────────────────── */
 #intro {
-  position: fixed; inset: 0; z-index: 9999;
-  background: var(--clr-primary);
-  display: flex; flex-direction: column;
-  align-items: flex-start; justify-content: flex-end;
-  padding: 48px;
+  position: fixed; inset: 0; z-index: 8000;
+  background: #0a0a0c;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-/* Wipe upward on exit */
-#intro.exit {
-  animation: intro-wipe var(--t-slow) var(--ease) forwards;
-}
-@keyframes intro-wipe {
-  to { transform: translateY(-100%); }
-}
-
-/* Text lines clip-reveal from bottom */
-.intro-word { display: block; overflow: hidden; }
-.intro-word span {
-  display: block;
-  color: #131315;
+#intro-logo {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 0.88;
-  transform: translateY(105%);
-  animation: word-up var(--t-base) var(--ease) forwards;
+  font-weight: 700; font-size: clamp(48px, 10vw, 120px);
+  letter-spacing: -0.06em; color: #fff;
+  line-height: 1;
 }
-.intro-word:nth-child(1) span { font-size: clamp(3.5rem, 11vw, 9rem); animation-delay: 0.05s; }
-.intro-word:nth-child(2) span {
-  font-size: clamp(0.9rem, 2.5vw, 1.6rem);
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  opacity: 0.4;
-  animation-delay: 0.18s;
-}
-@keyframes word-up { to { transform: translateY(0); } }
-
-/* Progress bar — tells user "this is loading, 4 sec" */
-.intro-progress {
+#intro-logo .accent { color: #ffb4aa; }
+#intro-bar {
   position: absolute; bottom: 0; left: 0;
-  height: 2px; background: rgba(19,19,21,0.3); width: 100%;
+  height: 2px; width: 0; background: #ffb4aa;
 }
-.intro-progress-fill {
-  height: 100%; background: #131315; width: 0;
-  animation: progress-fill 3.6s linear 0.25s forwards;
+#intro-counter {
+  position: absolute; bottom: 40px; right: 48px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.3); font-weight: 700;
 }
-@keyframes progress-fill { to { width: 100%; } }
+#intro-lines-left  { position: absolute; left: 48px; top: 40px; }
+#intro-lines-right { position: absolute; right: 48px; top: 40px; }
+.intro-small {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.25); font-weight: 700;
+  text-transform: uppercase;
+}
+.intro-slash {
+  position: absolute; top: 0; left: 50%;
+  width: 1px; height: 0;
+  background: rgba(255,180,170,0.2);
+  transform: translateX(-50%);
+}
+.intro-slash-h {
+  position: absolute; top: 50%; left: 0;
+  height: 1px; width: 0;
+  background: rgba(255,180,170,0.2);
+  transform: translateY(-50%);
+}
+.intro-grid-overlay {
+  position: absolute; inset: 0;
+  background-size: 80px 80px;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  opacity: 0;
+}
+#intro-wipe {
+  position: absolute; inset: 0;
+  background: #0a0a0c;
+  transform-origin: left;
+}
 
-/* =============================================
-   PAGE — invisible until intro exits
-   ============================================= */
-#page { visibility: hidden; }
-#page.ready { visibility: visible; }
+/* ─────────────────────────────────
+   SITE
+───────────────────────────────── */
+#site { visibility: hidden; }
 
-/* =============================================
-   GLASS / GRID  (unchanged visuals)
-   ============================================= */
+/* ─────────────────────────────────
+   SHARED DESIGN
+───────────────────────────────── */
 .glass-panel {
   background: rgba(10,10,12,0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.1);
 }
 .cyber-grid {
   background-size: 60px 60px;
   background-image:
-    linear-gradient(to right,  rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
 }
-
-/* =============================================
-   CORNER ACCENTS  (shared helper)
-   ============================================= */
-.ca { position: relative; }
-.ca::before {
-  content: ''; position: absolute; top: -1px; left: -1px;
-  width: 10px; height: 10px;
-  border-top: 2px solid var(--clr-primary);
-  border-left: 2px solid var(--clr-primary);
-  transition: width var(--t-base) var(--ease), height var(--t-base) var(--ease);
+.corner-accent::before {
+  content:''; position:absolute; top:-1px; left:-1px;
+  width:10px; height:10px;
+  border-top:2px solid #ffb4aa; border-left:2px solid #ffb4aa;
 }
-.ca-br { position: relative; }
-.ca-br::after {
-  content: ''; position: absolute; bottom: -1px; right: -1px;
-  width: 10px; height: 10px;
-  border-bottom: 2px solid var(--clr-primary);
-  border-right: 2px solid var(--clr-primary);
-  transition: width var(--t-base) var(--ease), height var(--t-base) var(--ease);
+.corner-accent-br::after {
+  content:''; position:absolute; bottom:-1px; right:-1px;
+  width:10px; height:10px;
+  border-bottom:2px solid #ffb4aa; border-right:2px solid #ffb4aa;
 }
-/* Expand on any hoverable parent that carries .ca / .ca-br */
-.btn:hover.ca::before,   a:hover.ca::before   { width: 18px; height: 18px; }
-.btn:hover.ca-br::after, a:hover.ca-br::after { width: 18px; height: 18px; }
 
-/* =============================================
-   UNIFIED BUTTON SYSTEM
-   .btn-fill  — white, sweeps primary on hover
-   .btn-ghost — transparent, brightens border on hover
-   Both share identical timing, easing, scale, corner accent behaviour.
-   ============================================= */
+/* ─────────────────────────────────
+   BUTTONS
+───────────────────────────────── */
 .btn {
   position: relative; overflow: hidden;
-  display: inline-flex; align-items: center; gap: 12px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 16px 32px; cursor: pointer;
-  /* Shared transitions */
-  transition:
-    color        var(--t-fast) ease,
-    border-color var(--t-fast) ease,
-    transform    var(--t-fast) ease;
+  display: inline-flex; align-items: center;
+  will-change: transform;
 }
-.btn:active { transform: scale(0.96); }
-
-/* Shared sweep — pseudo fills from left */
-.btn::before {
-  content: ''; position: absolute; inset: 0;
-  transform: scaleX(0); transform-origin: left;
-  transition: transform var(--t-base) var(--ease);
-  z-index: 0;
-}
-.btn > * { position: relative; z-index: 1; }
-.btn:hover::before { transform: scaleX(1); }
-
-/* Fill variant */
 .btn-fill {
-  background: #ffffff; color: #000000;
-  border: 1px solid #ffffff;
+  position: absolute; inset: 0; z-index: 0;
+  background: #ffb4aa;
+  clip-path: inset(0 101% 0 0);
+  transition: clip-path 0.55s cubic-bezier(0.77,0,0.18,1);
 }
-.btn-fill::before { background: var(--clr-primary); }
-.btn-fill:hover   { color: #000000; }
-
-/* Ghost variant */
-.btn-ghost {
-  background: transparent; color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.25);
+.btn:hover .btn-fill { clip-path: inset(0 0% 0 0); }
+.btn-label,
+.btn .material-symbols-outlined {
+  position: relative; z-index: 1;
+  transition: color 0.3s;
 }
-.btn-ghost::before { background: rgba(255,255,255,0.07); }
-.btn-ghost:hover   { border-color: rgba(255,255,255,0.65); }
+.btn[data-btn="light"]:hover .btn-label,
+.btn[data-btn="dark"]:hover .btn-label      { color: #131315 !important; }
+.btn[data-btn="light"]:hover .material-symbols-outlined,
+.btn[data-btn="dark"]:hover .material-symbols-outlined { color: #131315 !important; }
+.btn[data-btn="primary"] .btn-fill          { background: #131315; }
+.btn[data-btn="primary"]:hover .btn-label   { color: #ffffff !important; }
+.btn[data-btn="primary"]:hover .material-symbols-outlined { color: #ffffff !important; }
 
-/* Arrow nudge — only inside ghost, signals direction */
-.btn .ico-arrow {
-  transition: transform var(--t-base) var(--ease);
-  color: rgba(255,255,255,0.4);
-}
-.btn:hover .ico-arrow { transform: translateX(5px); }
-
-/* =============================================
-   NAV  — "Hire Me" is the compact fill variant
-   ============================================= */
-.btn-sm {
-  padding: 8px 22px;
-  font-size: 10px; letter-spacing: 0.15em;
-  border-width: 2px;
-}
-
-/* Nav slides down once page is ready */
-nav { opacity: 0; transform: translateY(-100%); }
-nav.ready { animation: nav-in var(--t-slow) var(--ease) forwards; }
-@keyframes nav-in { to { opacity: 1; transform: translateY(0); } }
-
-/* =============================================
-   UNIFIED LINK HOVER  (nav + footer)
-   Underline sweeps left-to-right with primary colour.
-   ============================================= */
-.lnk {
+/* ─────────────────────────────────
+   NAV LINKS
+───────────────────────────────── */
+.nav-item {
   position: relative;
-  transition: color var(--t-fast) ease;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; letter-spacing: 0.15em;
+  font-weight: 700; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s;
+  padding-bottom: 4px;
 }
-.lnk::after {
+.nav-item::after {
   content: ''; position: absolute;
-  left: 0; bottom: -3px;
-  width: 0; height: 1px;
-  background: var(--clr-primary);
-  transition: width var(--t-base) var(--ease);
+  bottom: 0; left: 0; width: 100%; height: 1px;
+  background: #ffb4aa;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.4s cubic-bezier(0.77,0,0.18,1);
 }
-.lnk:hover        { color: #ffffff; }
-.lnk:hover::after { width: 100%; }
-.lnk.active        { color: #ffffff; }
-.lnk.active::after { width: 100%; }
+.nav-item:hover, .nav-item.active { color: #fff; }
+.nav-item:hover::after, .nav-item.active::after { clip-path: inset(0 0% 0 0); }
 
-/* =============================================
-   HERO  — staggered fade-up after intro exits
-   ============================================= */
-.h-in {
-  opacity: 0; transform: translateY(22px);
-  transition:
-    opacity   var(--t-slow) var(--ease),
-    transform var(--t-slow) var(--ease);
+.will-anim { will-change: transform, opacity; }
+
+/* ─────────────────────────────────
+   SERVICE CARD
+───────────────────────────────── */
+.svc-card { transition: background-color 0.4s; }
+.svc-card:hover { background-color: rgba(255,180,170,0.04); }
+
+/* ─────────────────────────────────
+   PROJECT IMAGE
+───────────────────────────────── */
+.proj-img-wrap { overflow: hidden; }
+.proj-img-inner { will-change: transform; }
+
+/* ─────────────────────────────────
+   LOOP ANIMATIONS — CSS keyframes
+   for the ambient effects that were
+   buggy in GSAP (coord flickers, etc.)
+───────────────────────────────── */
+
+/* Badge dot breathe */
+@keyframes dotBreathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.7); opacity: 0.5; }
 }
-/* Each child gets an incremental delay via inline style — see HTML */
-.hero-go .h-in { opacity: 1; transform: translateY(0); }
+#badge-dot { animation: dotBreathe 1.4s ease-in-out infinite; }
 
-/* =============================================
-   AMBIENT LOOPS  — slow, purposeful, background
-   ============================================= */
-.pulse-dot { animation: pulse-dot 2.6s ease-in-out infinite; }
-@keyframes pulse-dot {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%     { opacity:.3; transform:scale(.6); }
+/* Status dot glow ring */
+@keyframes statusPulse {
+  0%   { box-shadow: 0 0 0 0px rgba(255,180,170,0.6); }
+  100% { box-shadow: 0 0 0 7px rgba(255,180,170,0); }
 }
+#status-dot { animation: statusPulse 1.5s ease-out infinite; }
 
-.drift-v { animation: drift-v 9s ease-in-out infinite; }
-@keyframes drift-v { 0%,100%{opacity:.3} 50%{opacity:.58} }
-
-.drift-h { animation: drift-h 11s ease-in-out infinite; }
-@keyframes drift-h { 0%,100%{opacity:.3} 50%{opacity:.58} }
-
-.blink-coord { animation: blink-coord 5s ease-in-out infinite; }
-@keyframes blink-coord { 0%,86%,100%{opacity:1} 92%{opacity:.12} }
-
-.scroll-vert { animation: scroll-vert 14s linear infinite; will-change:transform; }
-@keyframes scroll-vert {
-  from { transform: translateY(-30%) rotate(90deg); }
-  to   { transform: translateY(30%) rotate(90deg); }
+/* Hero line 3 colour breathe */
+@keyframes colourBreathe {
+  0%, 100% { color: #ffb4aa; }
+  50%       { color: #fff5f3; }
 }
+#hero-line-3 { animation: colourBreathe 2.8s ease-in-out infinite; }
 
-/* =============================================
-   SCROLL REVEAL  — generic .reveal class
-   ============================================= */
-.reveal {
-  opacity: 0; transform: translateY(24px);
-  transition:
-    opacity   var(--t-slow) var(--ease),
-    transform var(--t-slow) var(--ease);
+/* Scanline drift — simple top offset loop, no opacity modifier needed */
+@keyframes scanDrift {
+  0%   { top: -2%; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 102%; opacity: 0; }
 }
-.reveal.in-view { opacity: 1; transform: translateY(0); }
+#hero-scanline { animation: scanDrift 6s linear infinite; }
 
-footer {
-  opacity: 0; transform: translateY(20px);
-  transition:
-    opacity   var(--t-slow) var(--ease),
-    transform var(--t-slow) var(--ease);
+/* Coord labels — a slow gentle opacity breathe, not a harsh flicker */
+@keyframes ambientFade {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.15; }
 }
-footer.in-view { opacity: 1; transform: translateY(0); }
+#hero-coord-tl { animation: ambientFade 8s ease-in-out infinite; animation-delay: 0s; }
+#hero-coord-br { animation: ambientFade 8s ease-in-out infinite; animation-delay: 2.6s; }
+#hero-coord-r  { animation: ambientFade 8s ease-in-out infinite; animation-delay: 5.1s; }
 
-/* =============================================
-   SCROLL PROGRESS BAR
-   ============================================= */
-#prog {
-  position: fixed; top: 0; left: 0;
-  height: 2px; width: 0%;
-  background: var(--clr-primary);
-  z-index: 10000;
-  transition: width 80ms linear;
+/* Nav logo letter-spacing breathe */
+@keyframes logoBreath {
+  0%, 100% { letter-spacing: -0.06em; }
+  50%       { letter-spacing: -0.04em; }
 }
+#nav-logo { animation: logoBreath 3.5s ease-in-out infinite; }
+
+/* Hero badge border breathe */
+@keyframes badgeBorder {
+  0%, 100% { border-color: rgba(255,255,255,0.1); }
+  50%       { border-color: rgba(255,180,170,0.6); }
+}
+#hero-badge { animation: badgeBorder 2.2s ease-in-out infinite; }
+
+/* SCN readout labels — subtle per-card stagger */
+@keyframes scnBlink {
+  0%, 94%, 100% { opacity: 0.1; }
+  96%            { opacity: 0.0; }
+}
+.svc-card:nth-child(1) .svc-scn { animation: scnBlink 9s ease-in-out infinite; animation-delay: 0s; }
+.svc-card:nth-child(2) .svc-scn { animation: scnBlink 9s ease-in-out infinite; animation-delay: 3.1s; }
+.svc-card:nth-child(3) .svc-scn { animation: scnBlink 9s ease-in-out infinite; animation-delay: 6.2s; }
+.svc-card:nth-child(4) .svc-scn { animation: scnBlink 9s ease-in-out infinite; animation-delay: 1.7s; }
 </style>
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
 
-<!-- ════════════════════════════════════════
-     INTRO LOADER
-     ════════════════════════════════════════ -->
+<!-- ══════════ CURSOR ══════════ -->
+<div id="c-dot"></div>
+<!-- SVG ring: vector circle stays crisp at any scale -->
+<svg id="c-ring" viewBox="-18 -18 36 36" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="0" cy="0" r="17"/>
+</svg>
+
+<!-- ══════════ INTRO SCREEN ══════════ -->
 <div id="intro" aria-hidden="true">
-  <div class="intro-word"><span>CASPAR PORTFOLIO_</span></div>
-  <div class="intro-word" style="margin-top:14px"><span>Creative :D / 2026</span></div>
-  <div class="intro-progress"><div class="intro-progress-fill"></div></div>
+  <div class="intro-grid-overlay" id="intro-grid"></div>
+  <div class="intro-slash" id="intro-slash-v"></div>
+  <div class="intro-slash-h" id="intro-slash-h"></div>
+  <div id="intro-lines-left">
+    <div class="intro-small" style="opacity:0" id="intro-tl">SYS.BOOT // v3.1.4</div>
+  </div>
+  <div id="intro-lines-right">
+    <div class="intro-small" style="opacity:0" id="intro-tr">PORTFOLIO.INIT</div>
+  </div>
+  <div id="intro-logo" style="opacity:0; clip-path: inset(0 0 100% 0)">
+    CASPAR_<span class="accent">_</span>
+  </div>
+  <div id="intro-counter" style="opacity:0">000</div>
+  <div id="intro-bar"></div>
+  <div id="intro-wipe"></div>
 </div>
 
-<!-- Scroll progress -->
-<div id="prog"></div>
+<!-- ══════════ SITE CONTENT ══════════ -->
+<div id="site">
 
-<!-- ════════════════════════════════════════
-     PAGE
-     ════════════════════════════════════════ -->
-<div id="page" class="flex flex-col min-h-screen">
-
-  <!-- NAV -->
-  <nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
-    <div class="flex justify-between items-center px-8 py-5 max-w-container-max mx-auto">
-      <a class="text-2xl font-bold font-headline-xl text-white tracking-tighter uppercase" href="#">CASPAR_PORTFOLIO_</a>
-      <div class="hidden md:flex space-x-12 items-center">
-        <a class="lnk font-label-mono text-zinc-400 uppercase text-[10px]" href="#work">[ 01 ] WORK</a>
-        <a class="lnk font-label-mono text-zinc-400 uppercase text-[10px]" href="#services">[ 02 ] SERVICES</a>
-        <a class="lnk font-label-mono text-zinc-400 uppercase text-[10px]" href="#about">[ 03 ] ABOUT</a>
-        <a class="lnk font-label-mono text-zinc-400 uppercase text-[10px]" href="#contact">[ 04 ] CONTACT</a>
-      </div>
-      <!-- Compact fill button — same system as hero buttons -->
-      <button class="btn btn-fill btn-sm ca ca-br">
-        <span>Hire Me</span>
-      </button>
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5" id="nav" style="opacity:0; transform:translateY(-100%)">
+  <div class="flex justify-between items-center px-8 py-5 max-w-container-max mx-auto">
+    <a id="nav-logo" class="text-2xl font-bold font-headline-xl text-white tracking-tighter uppercase" href="#hero">CASPAR_</a>
+    <div class="hidden md:flex space-x-12 items-center">
+      <a class="nav-item" href="#work" data-section="work">[ 01 ] WORK</a>
+      <a class="nav-item" href="#services" data-section="services">[ 02 ] SERVICES</a>
+      <a class="nav-item" href="#about" data-section="about">[ 03 ] ABOUT</a>
+      <a class="nav-item" href="#contact" data-section="contact">[ 04 ] CONTACT</a>
     </div>
-  </nav>
+    <button class="btn bg-white text-black px-6 py-2 font-label-mono font-bold tracking-widest rounded-none border-2 border-white" data-btn="light">
+      <div class="btn-fill"></div>
+      <span class="btn-label text-[10px] uppercase">Hire Me</span>
+    </button>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="relative flex-grow flex items-center justify-center pt-24 pb-20 overflow-hidden bg-background">
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden bg-background" id="hero">
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0 cyber-grid opacity-50"></div>
+    <div class="absolute top-0 left-1/4 w-px h-full bg-white/5"></div>
+    <div class="absolute top-0 left-3/4 w-px h-full bg-white/5"></div>
+    <div class="absolute top-1/3 left-0 w-full h-px bg-white/5"></div>
+    <div class="absolute top-[20%] left-[10%] w-px h-[60%] bg-gradient-to-b from-transparent via-primary/30 to-transparent"></div>
+    <div class="absolute top-[60%] right-[15%] w-[40%] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+    <!-- Scanline: CSS animation handles the loop cleanly -->
+    <div id="hero-scanline" class="absolute left-0 w-full h-px pointer-events-none" style="background: linear-gradient(to right, transparent, rgba(255,180,170,0.18), transparent);"></div>
+    <div class="absolute top-32 left-8 font-label-mono text-[10px] text-zinc-500 tracking-[0.2em] font-bold" style="opacity:0" id="hero-coord-tl">SYS.OP.449 // RELATIVE_ZERO</div>
+    <div class="absolute bottom-32 right-8 font-label-mono text-[10px] text-zinc-500 tracking-[0.2em] font-bold" style="opacity:0" id="hero-coord-br">LOC: 45.92, -12.04</div>
+    <div class="absolute top-1/2 right-12 -translate-y-1/2 font-label-mono text-[10px] text-zinc-600 tracking-[0.3em] rotate-90 origin-right font-black uppercase" style="opacity:0" id="hero-coord-r">initiating_sequence_alpha</div>
+  </div>
 
-    <!-- Background -->
-    <div class="absolute inset-0 z-0 overflow-hidden">
-      <div class="absolute inset-0 cyber-grid opacity-50"></div>
-      <div class="absolute top-0 left-1/4 w-px h-full bg-white/5"></div>
-      <div class="absolute top-0 left-3/4 w-px h-full bg-white/5"></div>
-      <div class="absolute top-1/3 left-0 w-full h-px bg-white/5"></div>
-      <!-- Ambient lines -->
-      <div class="drift-v absolute top-[20%] left-[10%] w-px h-[60%] bg-gradient-to-b from-transparent via-[#ffb4aa]/30 to-transparent"></div>
-      <div class="drift-h absolute top-[60%] right-[15%] w-[40%] h-px bg-gradient-to-r from-transparent via-[#ffb4aa]/30 to-transparent"></div>
-      <!-- Coordinate labels -->
-      <div class="blink-coord absolute top-32 left-8 font-label-mono text-[10px] text-zinc-500 tracking-[0.2em] font-bold">SYS.OP.449 // RELATIVE_ZERO</div>
-      <div class="blink-coord absolute bottom-32 right-8 font-label-mono text-[10px] text-zinc-500 tracking-[0.2em] font-bold" style="animation-delay:2.2s">LOC: 45.92, -12.04</div>
-      <!-- Scrolling side text -->
-      <div class="absolute top-0 right-12 h-full flex items-center overflow-hidden pointer-events-none">
-        <span class="scroll-vert font-label-mono text-[10px] text-zinc-600 tracking-[0.3em] font-black uppercase whitespace-nowrap">initiating_sequence_alpha</span>
+  <div class="relative z-10 max-w-container-max mx-auto px-8 w-full grid grid-cols-12 gap-gutter">
+    <div class="col-span-12 md:col-span-10 md:col-start-2 flex flex-col items-start text-left">
+      <div class="mb-8 border border-zinc-800 bg-zinc-900/50 px-4 py-1 flex items-center gap-3 relative corner-accent will-anim" id="hero-badge" style="opacity:0; transform:translateY(24px)">
+        <div class="w-2 h-2 bg-[#ffb4aa]" id="badge-dot"></div>
+        <span class="font-label-mono text-[10px] text-zinc-400 uppercase tracking-widest">Creative :D</span>
       </div>
-    </div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-container-max mx-auto px-8 w-full grid grid-cols-12 gap-4">
-      <div id="hero-content" class="col-span-12 md:col-span-10 md:col-start-2 flex flex-col items-start text-left">
-
-        <!-- Badge -->
-        <div class="h-in ca mb-8 border border-zinc-800 bg-zinc-900/50 px-4 py-1 flex items-center gap-3" style="transition-delay:0s">
-          <div class="pulse-dot w-2 h-2 bg-[#ffb4aa]"></div>
-          <span class="font-label-mono text-[10px] text-zinc-400 uppercase tracking-widest">Creative Visionary</span>
+      <h1 class="font-headline-xl leading-[0.9] text-white mb-10 max-w-full tracking-tighter font-bold uppercase flex flex-col" id="hero-headline">
+        <div class="hero-line-wrap" style="overflow:hidden"><span class="hero-line text-white font-black tracking-[-0.06em] leading-[0.85] block will-anim" style="transform:translateY(110%)">DESIGN AT</span></div>
+        <div class="hero-line-wrap" style="overflow:hidden"><span class="hero-line text-zinc-500 font-black tracking-[-0.06em] leading-[0.85] block will-anim" style="transform:translateY(110%)">THE SPEED</span></div>
+        <div class="hero-line-wrap" style="overflow:hidden"><span class="hero-line font-black tracking-[-0.06em] leading-[0.85] block will-anim" id="hero-line-3" style="transform:translateY(110%); color:#ffb4aa">OF LIGHT.</span></div>
+      </h1>
+      <style>#hero-headline { font-size: clamp(4rem, 10vw, 10rem); }</style>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full mt-4">
+        <p class="will-anim font-body-md text-lg max-w-md font-light tracking-wide leading-relaxed border-l-2 pl-6 text-zinc-300 border-primary" id="hero-sub" style="opacity:0; transform:translateY(24px)">
+          Crafting futuristic digital experiences for the world's most ambitious brands. Where minimalist precision meets <span class="text-white font-medium">cybernetic innovation</span>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 items-start md:justify-end will-anim" id="hero-btns" style="opacity:0; transform:translateY(24px)">
+          <a class="btn bg-white text-black px-8 py-4 relative corner-accent-br" href="#work" data-btn="light">
+            <div class="btn-fill"></div>
+            <span class="btn-label font-label-mono text-[11px] font-bold tracking-widest uppercase">Explore Work</span>
+          </a>
+          <a class="btn bg-transparent text-white px-8 py-4 border border-zinc-700 gap-3" href="#contact" data-btn="dark">
+            <div class="btn-fill"></div>
+            <span class="btn-label font-label-mono text-[11px] font-bold tracking-widest uppercase">Let's Talk</span>
+            <span class="material-symbols-outlined text-[14px] text-zinc-400">arrow_forward</span>
+          </a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Headline — each word is its own fade-up layer -->
-        <h1 class="font-headline-xl leading-[0.9] text-white mb-10 max-w-full tracking-tighter font-bold uppercase flex flex-col" style="font-size: clamp(4rem,10vw,10rem)">
-          <span class="h-in text-white font-black tracking-[-0.06em] leading-[0.85]"    style="transition-delay:.06s">DESIGN AT</span>
-          <span class="h-in text-zinc-500 font-black tracking-[-0.06em] leading-[0.85]" style="transition-delay:.14s">THE SPEED</span>
-          <span class="h-in text-[#ffb4aa] font-black tracking-[-0.06em] leading-[0.85]" style="transition-delay:.22s">OF LIGHT.</span>
-        </h1>
-
-        <!-- Body + CTA -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full mt-4">
-          <p class="h-in font-body-md text-lg max-w-md font-light tracking-wide leading-relaxed border-l-2 pl-6 text-zinc-300 border-[#ffb4aa]" style="transition-delay:.30s">
-            Crafting futuristic digital experiences for the world's most ambitious brands. Where minimalist precision meets <span class="text-white font-medium">cybernetic innovation</span>.
-          </p>
-          <div class="h-in flex flex-col sm:flex-row gap-4 items-start md:justify-end" style="transition-delay:.38s">
-            <!-- Same .btn system, same corner accents, same sweep timing -->
-            <a class="btn btn-fill ca ca-br" href="#work">Explore Work</a>
-            <a class="btn btn-ghost" href="#contact">
-              Let's Talk
-              <span class="ico-arrow material-symbols-outlined" style="font-size:14px">arrow_forward</span>
-            </a>
+<!-- WORK -->
+<section class="py-32 bg-background border-t border-white/5 relative" id="work">
+  <div class="absolute top-0 right-0 w-1/3 h-full cyber-grid opacity-10 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto px-8">
+    <div class="flex items-center justify-between mb-20 reveal-row">
+      <div class="flex items-center gap-6">
+        <span class="font-label-mono text-primary text-[12px] tracking-[0.4em] font-bold">01_</span>
+        <h2 class="font-headline-lg text-white uppercase tracking-tighter text-4xl">Featured Projects</h2>
+      </div>
+      <div class="hidden md:block w-32 h-px bg-zinc-800"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="proj-card reveal-up" data-index="0">
+        <div class="proj-img-wrap aspect-[16/10] bg-zinc-900 border border-zinc-800 relative">
+          <div class="proj-img-inner absolute inset-0 flex items-center justify-center">
+            <div class="absolute inset-0 cyber-grid opacity-20"></div>
+            <div class="text-zinc-800 font-black text-8xl select-none opacity-50">PRJ_01</div>
+            <div class="absolute bottom-4 right-4 bg-zinc-950/80 backdrop-blur px-3 py-1 border border-white/10 font-label-mono text-[9px] text-zinc-400">ARCHIVE_ID: 8824</div>
           </div>
         </div>
-
+        <div class="mt-8 flex flex-col gap-2">
+          <div class="flex justify-between items-start">
+            <h3 class="proj-title font-headline-md text-white uppercase tracking-tight text-2xl">Aether_Nexus Interface</h3>
+            <span class="font-label-mono text-zinc-500 text-[10px]">[ 2026 ]</span>
+          </div>
+          <p class="font-body-md text-zinc-400 text-sm max-w-md">Next-generation operating system UI for neural-link workstations. Built with high-fidelity React components.</p>
+          <div class="flex gap-4 mt-2">
+            <span class="font-label-mono text-[9px] text-primary uppercase tracking-widest">UI/UX</span>
+            <span class="font-label-mono text-[9px] text-primary uppercase tracking-widest">CYBER_CORE</span>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card reveal-up" data-index="1">
+        <div class="proj-img-wrap aspect-[16/10] bg-zinc-900 border border-zinc-800 relative">
+          <div class="proj-img-inner absolute inset-0 flex items-center justify-center">
+            <div class="absolute inset-0 cyber-grid opacity-20"></div>
+            <div class="text-zinc-800 font-black text-8xl select-none opacity-50">PRJ_02</div>
+            <div class="absolute bottom-4 right-4 bg-zinc-950/80 backdrop-blur px-3 py-1 border border-white/10 font-label-mono text-[9px] text-zinc-400">ARCHIVE_ID: 7109</div>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-col gap-2">
+          <div class="flex justify-between items-start">
+            <h3 class="proj-title font-headline-md text-white uppercase tracking-tight text-2xl">Spectral Identity</h3>
+            <span class="font-label-mono text-zinc-500 text-[10px]">[ 2026 ]</span>
+          </div>
+          <p class="font-body-md text-zinc-400 text-sm max-w-md">Visual branding and motion system for an AI-first logistics conglomerate based in Neo-Tokyo.</p>
+          <div class="flex gap-4 mt-2">
+            <span class="font-label-mono text-[9px] text-primary uppercase tracking-widest">BRANDING</span>
+            <span class="font-label-mono text-[9px] text-primary uppercase tracking-widest">STRATEGY</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="w-full py-8 glass-panel border-t border-white/5 relative z-10">
-    <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-container-max mx-auto space-y-6 md:space-y-0">
-      <div class="text-xl font-bold font-headline-md text-white tracking-tighter uppercase">CASPAR PORTFOLIO_</div>
-      <div class="flex space-x-8">
-        <!-- Same .lnk class as nav — identical hover behaviour -->
-        <a class="lnk font-label-mono text-zinc-500 text-[10px] tracking-[0.15em] uppercase font-bold" href="#">Twitter</a>
-        <a class="lnk font-label-mono text-zinc-500 text-[10px] tracking-[0.15em] uppercase font-bold" href="#">LinkedIn</a>
-        <a class="lnk font-label-mono text-zinc-500 text-[10px] tracking-[0.15em] uppercase font-bold" href="#">Dribbble</a>
-        <a class="lnk font-label-mono text-zinc-500 text-[10px] tracking-[0.15em] uppercase font-bold" href="#">GitHub</a>
-      </div>
-      <div class="font-label-mono text-zinc-600 text-[10px] tracking-widest uppercase">© 2026 CASPAR PORTFOLIO.</div>
+<!-- SERVICES -->
+<section class="py-32 bg-surface-container-lowest border-t border-white/5" id="services">
+  <div class="max-w-container-max mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-16">
+    <div class="md:col-span-4">
+      <span class="font-label-mono text-primary text-[12px] tracking-[0.4em] font-bold block mb-6 reveal-up">02_</span>
+      <h2 class="font-headline-lg text-white uppercase tracking-tighter text-5xl mb-8 leading-none reveal-up">Core<br/>Protocol</h2>
+      <p class="font-body-md text-zinc-500 border-l border-zinc-800 pl-6 text-sm leading-relaxed reveal-up">
+        Standardized approaches to complex digital problems. Deploying precise design systems and architectural frameworks.
+      </p>
     </div>
-  </footer>
+    <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-800/50 border border-zinc-800">
+      <div class="svc-card bg-background p-10 relative reveal-up">
+        <div class="svc-scn absolute top-4 right-4 text-zinc-800 font-label-mono text-[10px]">SCN_01</div>
+        <div class="svc-icon w-12 h-12 bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+          <span class="material-symbols-outlined text-primary">terminal</span>
+        </div>
+        <h4 class="font-headline-md text-white uppercase mb-4 text-xl">Digital Strategy</h4>
+        <p class="font-body-md text-zinc-400 text-sm">Comprehensive product roadmaps using data-driven insights and market-first positioning logic.</p>
+      </div>
+      <div class="svc-card bg-background p-10 relative reveal-up">
+        <div class="svc-scn absolute top-4 right-4 text-zinc-800 font-label-mono text-[10px]">SCN_02</div>
+        <div class="svc-icon w-12 h-12 bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+          <span class="material-symbols-outlined text-primary">layers</span>
+        </div>
+        <h4 class="font-headline-md text-white uppercase mb-4 text-xl">UI/UX Design</h4>
+        <p class="font-body-md text-zinc-400 text-sm">High-fidelity interface engineering focused on brutalist simplicity and friction-free interaction.</p>
+      </div>
+      <div class="svc-card bg-background p-10 relative reveal-up">
+        <div class="svc-scn absolute top-4 right-4 text-zinc-800 font-label-mono text-[10px]">SCN_03</div>
+        <div class="svc-icon w-12 h-12 bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+          <span class="material-symbols-outlined text-primary">token</span>
+        </div>
+        <h4 class="font-headline-md text-white uppercase mb-4 text-xl">Design Systems</h4>
+        <p class="font-body-md text-zinc-400 text-sm">Scalable component libraries built with technical precision for unified brand experiences.</p>
+      </div>
+      <div class="svc-card bg-background p-10 relative reveal-up">
+        <div class="svc-scn absolute top-4 right-4 text-zinc-800 font-label-mono text-[10px]">SCN_04</div>
+        <div class="svc-icon w-12 h-12 bg-primary/10 flex items-center justify-center mb-8 border border-primary/20">
+          <span class="material-symbols-outlined text-primary">monitoring</span>
+        </div>
+        <h4 class="font-headline-md text-white uppercase mb-4 text-xl">Creative Direction</h4>
+        <p class="font-body-md text-zinc-400 text-sm">End-to-end vision for brand-led digital products, from conceptual seed to global deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div><!-- /#page -->
+<!-- ABOUT -->
+<section class="py-32 bg-background border-t border-white/5" id="about">
+  <div class="max-w-container-max mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-16">
+    <div class="md:col-span-8 md:col-start-3">
+      <div class="flex items-center gap-6 mb-12 reveal-row">
+        <span class="font-label-mono text-primary text-[12px] tracking-[0.4em] font-bold">03_</span>
+        <h2 class="font-headline-lg text-white uppercase tracking-tighter text-4xl">Biometrics / Origin</h2>
+      </div>
+      <div class="space-y-10">
+        <p class="font-headline-md text-zinc-300 text-3xl leading-snug reveal-up">
+          I am a <span class="text-white font-bold">multidisciplinary designer</span> based at the intersection of technical excellence and creative instinct.
+        </p>
+        <div class="h-px w-full bg-zinc-800 reveal-line"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-body-md text-zinc-400 text-lg leading-relaxed">
+          <p class="reveal-up">With over a decade of experience navigating the digital landscape, I've developed a methodology rooted in "Obsidian Ember" philosophy: darkness provides the focus, while light defines the purpose.</p>
+          <p class="reveal-up">I operate within a hyper-focused workflow, treating every pixel as a data point and every interaction as a protocol. My work lives where brutalist architecture meets future-tech minimalism.</p>
+        </div>
+        <div class="flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-zinc-800/50 reveal-up">
+          <div class="flex flex-col gap-1">
+            <span class="font-label-mono text-[10px] text-zinc-600 uppercase tracking-widest">Location</span>
+            <span class="text-white font-bold uppercase tracking-tight">Global / Remote</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="font-label-mono text-[10px] text-zinc-600 uppercase tracking-widest">Experience</span>
+            <span class="text-white font-bold uppercase tracking-tight">12.5 Cycles</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="font-label-mono text-[10px] text-zinc-600 uppercase tracking-widest">Status</span>
+            <span class="text-primary font-bold uppercase tracking-tight flex items-center gap-2">
+              <span class="w-2 h-2 bg-primary rounded-full inline-block" id="status-dot"></span> Available
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<section class="py-32 bg-surface-container-lowest relative border-t border-white/5" id="contact">
+  <div class="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
+  <div class="max-w-container-max mx-auto px-8 relative z-10">
+    <div class="glass-panel p-16 md:p-24 border border-white/10 relative overflow-hidden reveal-up">
+      <div class="contact-line absolute top-0 left-0 w-1 h-full bg-primary/50" style="transform:scaleY(0); transform-origin:top"></div>
+      <div class="max-w-3xl">
+        <span class="font-label-mono text-primary text-[12px] tracking-[0.4em] font-bold block mb-8 reveal-up">04_</span>
+        <h2 class="font-headline-xl text-white uppercase tracking-[-0.05em] mb-12 leading-[0.85] reveal-up" style="font-size: clamp(2.5rem,8vw,6rem)">
+          INITIATE<br/><span class="text-zinc-600">CONNECTION_</span>
+        </h2>
+        <p class="font-body-md text-zinc-400 text-xl mb-12 max-w-xl reveal-up">
+          Ready to architect the next evolution of your digital presence? Secure line is open for high-impact collaborations.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 reveal-up">
+          <a class="btn bg-primary text-on-primary-container px-10 py-5 gap-4" href="mailto:contact@elite.sys" data-btn="primary">
+            <div class="btn-fill"></div>
+            <span class="btn-label font-label-mono text-[12px] font-bold tracking-widest uppercase">Send Transmission</span>
+            <span class="material-symbols-outlined text-[18px]">send</span>
+          </a>
+          <div class="flex items-center gap-8 px-6">
+            <a class="nav-item" href="#">Twitter</a>
+            <a class="nav-item" href="#">Discord</a>
+            <a class="nav-item" href="#">Resume</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 right-8 text-zinc-800 font-label-mono text-[10px] tracking-[0.5em] hidden lg:block">ST_00_49 // PORTAL_ACTIVE</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="w-full py-8 glass-panel border-t border-white/5 relative z-10 reveal-up">
+  <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-container-max mx-auto space-y-6 md:space-y-0">
+    <div class="text-xl font-bold font-headline-md text-white tracking-tighter uppercase">CASPAR_</div>
+    <div class="flex space-x-8">
+      <a class="nav-item" href="#">Twitter</a>
+      <a class="nav-item" href="#">LinkedIn</a>
+      <a class="nav-item" href="#">Dribbble</a>
+      <a class="nav-item" href="#">GitHub</a>
+    </div>
+    <div class="font-label-mono text-zinc-600 text-[10px] tracking-widest uppercase">© 2026 CASPAR PORTFOLIO.</div>
+  </div>
+</footer>
+
+</div><!-- /#site -->
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 <script>
-(function () {
-  const HOLD = 3800; // ms the intro stays visible
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-  const intro       = document.getElementById('intro');
-  const page        = document.getElementById('page');
-  const nav         = document.querySelector('nav');
-  const heroContent = document.getElementById('hero-content');
-  const prog        = document.getElementById('prog');
+/* ══════════════════════════════════════════
+   1. CURSOR
+   Dot: quickTo for zero-lag snap
+   Ring: SVG element — scales crisply because
+         vector-effect: non-scaling-stroke keeps
+         the circle stroke at exactly 1.5px
+         regardless of transform scale
+══════════════════════════════════════════ */
+const dot      = document.getElementById('c-dot');
+const ring     = document.getElementById('c-ring');
+const ringCirc = ring.querySelector('circle');
 
-  /* ── Intro exit ─────────────────────────────── */
-  setTimeout(() => {
-    intro.classList.add('exit');
-    page.classList.add('ready');
+const setDotX  = gsap.quickTo(dot,  'x', { duration: 0.05, ease: 'none' });
+const setDotY  = gsap.quickTo(dot,  'y', { duration: 0.05, ease: 'none' });
+const setRingX = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3' });
+const setRingY = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3' });
 
-    // Tiny rAF buffer so paint settles before animating
-    requestAnimationFrame(() => {
-      nav.classList.add('ready');
-      setTimeout(() => heroContent.classList.add('hero-go'), 80);
-    });
+window.addEventListener('mousemove', e => {
+  setDotX(e.clientX);
+  setDotY(e.clientY);
+  setRingX(e.clientX);
+  setRingY(e.clientY);
+}, { passive: true });
 
-    intro.addEventListener('animationend', () => intro.remove(), { once: true });
-  }, HOLD);
+// Ring expand: scale the SVG element — circle stroke stays crisp via vector-effect
+const interactEls = document.querySelectorAll('a, button, .proj-card, .svc-card');
+interactEls.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(ring,     { scale: 2.4, duration: 0.35, ease: 'power2.out' });
+    gsap.to(ringCirc, { attr: { stroke: 'rgba(255,180,170,0.9)' }, duration: 0.25 });
+    gsap.to(dot,      { scale: 0.4, duration: 0.25, ease: 'power2.out' });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(ring,     { scale: 1, duration: 0.35, ease: 'power2.out' });
+    gsap.to(ringCirc, { attr: { stroke: 'rgba(255,180,170,0.55)' }, duration: 0.35 });
+    gsap.to(dot,      { scale: 1, duration: 0.25, ease: 'power2.out' });
+  });
+});
 
-  /* ── Scroll progress ─────────────────────────── */
-  window.addEventListener('scroll', () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    prog.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
-  }, { passive: true });
 
-  /* ── Scroll reveal ───────────────────────────── */
-  const ro = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); }),
-    { threshold: 0.15 }
-  );
-  document.querySelectorAll('.reveal, footer').forEach(el => ro.observe(el));
+/* ══════════════════════════════════════════
+   2. SMOOTH SCROLL
+══════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = link.getAttribute('href');
+    if (!target || target === '#') return;
+    const el = document.querySelector(target);
+    if (!el) return;
+    e.preventDefault();
+    gsap.to(window, { scrollTo: { y: el, offsetY: 72 }, duration: 1.1, ease: 'power3.inOut' });
+  });
+});
 
-  /* ── Active nav link on scroll ───────────────── */
-  const navLinks  = document.querySelectorAll('nav .lnk');
-  const secIds    = ['work','services','about','contact'];
-  const so = new IntersectionObserver(
-    entries => entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-      }
-    }),
-    { threshold: 0.5 }
-  );
-  secIds.forEach(id => { const el = document.getElementById(id); if (el) so.observe(el); });
+// Active nav on scroll
+['work','services','about','contact'].forEach(id => {
+  ScrollTrigger.create({
+    trigger: `#${id}`, start: 'top 55%', end: 'bottom 45%',
+    onToggle: ({ isActive }) => {
+      document.querySelectorAll(`.nav-item[data-section="${id}"]`).forEach(a => {
+        a.classList.toggle('active', isActive);
+      });
+    }
+  });
+});
+
+
+/* ══════════════════════════════════════════
+   3. INTRO — cinematic boot sequence
+══════════════════════════════════════════ */
+(function runIntro() {
+  const tl = gsap.timeline({ onComplete: runHeroEntrance });
+
+  tl.to('#intro-grid',    { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0)
+    .to('#intro-tl',      { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.3)
+    .to('#intro-tr',      { opacity: 1, duration: 0.4, ease: 'power2.out' }, 0.45)
+    .to('#intro-slash-v', { height: '100%', duration: 1.0, ease: 'power3.inOut' }, 0.2)
+    .to('#intro-slash-h', { width: '100%',  duration: 1.0, ease: 'power3.inOut' }, 0.5)
+    .to('#intro-counter', { opacity: 1, duration: 0.3 }, 0.4)
+    .add(() => {
+      let count = 0;
+      const el = document.getElementById('intro-counter');
+      const iv = setInterval(() => {
+        count += Math.ceil(Math.random() * 12);
+        if (count >= 100) { count = 100; clearInterval(iv); }
+        el.textContent = String(count).padStart(3, '0');
+      }, 30);
+    }, 0.5)
+    .to('#intro-bar',  { width: '100%', duration: 2.2, ease: 'power1.inOut' }, 0.5)
+    .to('#intro-logo', { opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power4.out' }, 0.8)
+    .to('#intro-logo', { scaleX: 1.012, duration: 0.07, ease: 'none', yoyo: true, repeat: 3 }, 1.6)
+    .addPause(2.8)
+    .set('#site', { visibility: 'visible' }, 2.9)
+    .fromTo('#intro-wipe',
+      { scaleX: 0, transformOrigin: 'right center' },
+      { scaleX: 1, duration: 0.7, ease: 'power4.inOut' }, 2.9)
+    .to('#intro', { opacity: 0, duration: 0.2,
+      onComplete: () => { document.getElementById('intro').style.display = 'none'; }
+    }, 3.5);
+
+  setTimeout(() => { tl.resume(); }, 2850);
 })();
+
+
+/* ══════════════════════════════════════════
+   4. HERO ENTRANCE
+══════════════════════════════════════════ */
+function runHeroEntrance() {
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  tl
+    .to('#nav',       { opacity: 1, y: 0, duration: 0.75 }, 0)
+    .to('#hero-badge',{ opacity: 1, y: 0, duration: 0.55 }, 0.15)
+    .to('.hero-line', { y: '0%', duration: 0.8, stagger: 0.12, ease: 'power4.out' }, 0.3)
+    // reveal coord labels (CSS loops handle the ongoing flicker)
+    .to(['#hero-coord-tl','#hero-coord-br','#hero-coord-r'], {
+      opacity: 0.45, duration: 0.5, stagger: 0.1
+    }, 0.6)
+    .to('#hero-sub',  { opacity: 1, y: 0, duration: 0.55 }, 0.75)
+    .to('#hero-btns', { opacity: 1, y: 0, duration: 0.55 }, 0.88);
+}
+
+
+/* ══════════════════════════════════════════
+   5. SCROLL REVEALS
+══════════════════════════════════════════ */
+gsap.set('.reveal-up',   { opacity: 0, y: 44 });
+gsap.set('.reveal-row',  { opacity: 0, y: 24 });
+gsap.set('.reveal-line', { scaleX: 0, transformOrigin: 'left' });
+
+gsap.utils.toArray('.reveal-up').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    opacity: 1, y: 0, duration: 0.75, ease: 'power3.out'
+  });
+});
+gsap.utils.toArray('.reveal-row').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    opacity: 1, y: 0, duration: 0.65, ease: 'power3.out'
+  });
+});
+gsap.utils.toArray('.reveal-line').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
+    scaleX: 1, duration: 0.9, ease: 'power3.inOut'
+  });
+});
+
+
+/* ══════════════════════════════════════════
+   6. PROJECT CARD hover
+══════════════════════════════════════════ */
+document.querySelectorAll('.proj-card').forEach(card => {
+  const img   = card.querySelector('.proj-img-inner');
+  const title = card.querySelector('.proj-title');
+  const tl    = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+  tl.to(img,   { scale: 1.04, duration: 0.55 })
+    .to(title,  { x: 8, duration: 0.4 }, 0);
+  card.addEventListener('mouseenter', () => tl.play());
+  card.addEventListener('mouseleave', () => tl.reverse());
+});
+
+
+/* ══════════════════════════════════════════
+   7. SERVICE CARD icon hover
+══════════════════════════════════════════ */
+document.querySelectorAll('.svc-card').forEach(card => {
+  const icon = card.querySelector('.svc-icon');
+  const tl   = gsap.timeline({ paused: true, defaults: { ease: 'back.out(1.7)', duration: 0.4 } });
+  tl.to(icon, { rotation: 10, scale: 1.15 });
+  card.addEventListener('mouseenter', () => tl.play());
+  card.addEventListener('mouseleave', () => tl.reverse());
+});
+
+
+/* ══════════════════════════════════════════
+   8. CONTACT LINE reveal
+══════════════════════════════════════════ */
+ScrollTrigger.create({
+  trigger: '#contact', start: 'top 70%', toggleActions: 'play none none none',
+  onEnter: () => {
+    gsap.to('.contact-line', { scaleY: 1, duration: 1.3, ease: 'power3.out', delay: 0.3 });
+  }
+});
+
+
+/* ══════════════════════════════════════════
+   9. BUTTON magnetic pull
+══════════════════════════════════════════ */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r  = btn.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width  / 2)) * 0.22;
+    const dy = (e.clientY - (r.top  + r.height / 2)) * 0.22;
+    gsap.to(btn, { x: dx, y: dy, duration: 0.4, ease: 'power2.out' });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { x: 0, y: 0, duration: 0.55, ease: 'elastic.out(1, 0.4)' });
+  });
+});
+
+/* ══════════════════════════════════════════
+   NOTE: All looping ambient animations are
+   handled by CSS keyframes (see <style>).
+   This avoids GSAP repeat:-1 conflicts with
+   yoyo and stagger that caused the glitchy
+   behaviour. CSS animations are more reliable
+   for infinite loops on simple properties.
+══════════════════════════════════════════ */
 </script>
 </body>
 </html>
