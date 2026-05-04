@@ -1,0 +1,34 @@
+import pygame
+import sys
+pygame.init()
+
+# värvid
+red = [255, 0, 0]
+lGreen = [153, 255, 153]
+
+# ekraani seaded
+screen = pygame.display.set_mode([640, 480])
+pygame.display.set_caption("Harjutamine")
+
+# funktsioon ruudustiku joonistamiseks
+def drawGrid(ruuduSuurus, read, veerud, jooneVärv):
+    screen.fill(lGreen)
+    for rida in range(read):
+        for veerg in range(veerud):
+            x = veerg * ruuduSuurus
+            y = rida * ruuduSuurus
+            pygame.draw.rect(screen, jooneVärv, [x, y, ruuduSuurus, ruuduSuurus], 1)
+
+# kutsun funktsiooni välja
+drawGrid(20, 24, 32, red)
+
+pygame.display.flip()
+
+# hoiame akent lahti
+gameover = False
+while not gameover:
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            sys.exit()
+
+pygame.quit()
