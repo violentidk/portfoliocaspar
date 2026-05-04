@@ -1,0 +1,30 @@
+import pygame
+import random
+import sys
+pygame.init()
+
+# värvid
+red = [255, 0, 0]
+lGreen = [153, 255, 153]
+
+# ekraani seaded
+screen = pygame.display.set_mode([640, 480])
+pygame.display.set_caption("Harjutamine")
+screen.fill(lGreen)
+
+# joonistame 10 ruutu suvalistes kohtades
+for i in range(1, 11):
+    x = random.randint(0, 620)
+    y = random.randint(0, 460)
+    pygame.draw.rect(screen, red, [x, y, 20, 20])
+
+pygame.display.flip()
+
+# hoiame akent lahti
+gameover = False
+while not gameover:
+    for i in pygame.event.get():
+        if i.type == pygame.QUIT:
+            sys.exit()
+
+pygame.quit()
