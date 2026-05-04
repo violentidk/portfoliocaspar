@@ -1,0 +1,73 @@
+import pygame, sys, random
+pygame.init()
+
+# värvid
+white = [255, 255, 255]
+
+# ekraani seaded
+screenX = 640
+screenY = 480
+screen = pygame.display.set_mode([screenX, screenY])
+pygame.display.set_caption("Rally")
+clock = pygame.time.Clock()
+
+# pildid
+taust = pygame.image.load("img/bg_rally.jpg")
+taust = pygame.transform.scale(taust, [screenX, screenY])
+
+punane_auto = pygame.image.load("img/f1_red.png")
+punane_auto = pygame.transform.scale(punane_auto, [60, 100])
+
+sinine_auto = pygame.image.load("img/f1_blue.png")
+sinine_auto = pygame.transform.scale(sinine_auto, [60, 100])
+
+# punase auto koht
+punaneX = screenX // 2 - 30
+punaneY = screenY - 120
+
+# skoor
+skoor = 0
+font = pygame.font.SysFont("Arial", 30)
+
+# siniste autode koordinaadid
+coords = []
+for i in range(5):
+    x = random.randint(150, 450)
+    y = random.randint(-400, -50)
+    speed = random.randint(2, 5)
+    coords.append([x, y, speed])
+
+gameover = False
+
+while not gameover:
+    clock.tick(60)
+
+    #mängu sulgemine ristist
+    for i in pygame.event.get():
+       if i.type == pygame.QUIT:
+           sys.exit()
+
+    #taust
+    screen.blit(taust, (0, 0))
+
+    #punane auto
+    screen.blit(punane_auto, (punaneX, punaneY))
+
+    #sinised autod liiguvad alla
+    for i in range(len(coords)):
+        screen.blit(sinine_auto, (coords[i][0], coords[i][1]))
+        coords[i][1] += coords[i][2]
+
+        #kui auto jõuab alla, läheb uuesti üles
+        if coords[i][1] > screenY:
+            coords[i][1] = random.randint(-400, -50)
+            coords[i][0] = random.randint(150, 450)
+            skoor += 10
+
+    #skoor
+    skoorTekst = font.render("Skoor: " + str(skoor), True, white)
+    screen.blit(skoorTekst, (10, 10))
+
+    pygame.display.flip()
+
+pygame.quit()
